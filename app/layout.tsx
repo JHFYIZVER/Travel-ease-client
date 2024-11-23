@@ -1,28 +1,29 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
+import { Toaster } from "@/components/ui/sonner";
 
 const vkSansRegular = localFont({
   src: "./fonts/VKSansDisplay-Regular.ttf",
-  variable: "--font-geist-sans",
+  variable: "--font-geist-regular",
   weight: "200",
 });
 
 const vkSansMedium = localFont({
   src: "./fonts/VKSansDisplay-Medium.ttf",
-  variable: "--font-geist-sans",
+  variable: "--font-geist-medium",
   weight: "400",
 });
 
 const vkSansDemiBold = localFont({
   src: "./fonts/VKSansDisplay-DemiBold.ttf",
-  variable: "--font-geist-sans",
+  variable: "--font-geist-semiBold",
   weight: "500",
 });
 
 const vkSansBold = localFont({
   src: "./fonts/VKSansDisplay-Bold.ttf",
-  variable: "--font-geist-sans",
+  variable: "--font-geist-bold",
   weight: "700",
 });
 
@@ -42,6 +43,7 @@ export default function RootLayout({
         className={`${vkSansRegular.variable} ${vkSansMedium.variable} ${vkSansDemiBold.variable} ${vkSansBold.variable} antialiased`}
       >
         {children}
+        <Toaster />
       </body>
     </html>
   );
