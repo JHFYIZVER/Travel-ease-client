@@ -14,7 +14,7 @@ const Page = () => {
           учетной записи.
         </p>
         <RegistrForm />
-        <p className="flex items-center gap-2">
+        <p className="flex items-center gap-2 mx-auto">
           У вас уже есть аккаунт?
           <Link className="text-red" href="/login">
             Авторизоваться

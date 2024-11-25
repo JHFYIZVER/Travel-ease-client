@@ -12,7 +12,7 @@ const Page = () => {
           Войдите, чтобы получить доступ к своей учетной записи TravelEasy
         </p>
         <LoginForm />
-        <p className="flex items-center gap-2">
+        <p className="flex items-center gap-2 mx-auto">
           У вас нет учетной записи?
           <Link className="text-red" href="/registration">
             Зарегистрироваться

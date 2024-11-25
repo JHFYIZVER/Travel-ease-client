@@ -2,6 +2,11 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
 import { Toaster } from "@/components/ui/sonner";
+import dynamic from "next/dynamic";
+
+const Header = dynamic(() => import("@/components/header"), {
+  ssr: false,
+});
 
 const vkSansRegular = localFont({
   src: "./fonts/VKSansDisplay-Regular.ttf",
@@ -42,6 +47,7 @@ export default function RootLayout({
       <body
         className={`${vkSansRegular.variable} ${vkSansMedium.variable} ${vkSansDemiBold.variable} ${vkSansBold.variable} antialiased`}
       >
+        <Header />
         {children}
         <Toaster />
       </body>

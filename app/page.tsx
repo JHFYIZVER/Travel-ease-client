@@ -1,11 +1,5 @@
-import Header from "@/components/header";
-import Image from "next/image";
+import { HomePage } from "@/app/(home)/index";
 
 export default function Home() {
-  return (
-    <>
-      <Header />
-      <h1>Home</h1>
-    </>
-  );
+  return <HomePage />;
 }

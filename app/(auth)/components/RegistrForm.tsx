@@ -72,7 +72,7 @@ const RegistrForm = () => {
 
   const handlerSubmit = async (data: z.infer<typeof formSchema>) => {
     try {
-      const response = await fetch("http://localhost:5000/api/auth/registartion", {
+      const response = await fetch(process.env.SERVER_URL + "/api/auth/registartion", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
