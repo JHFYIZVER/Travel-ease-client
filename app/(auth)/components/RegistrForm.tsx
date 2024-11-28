@@ -72,21 +72,30 @@ const RegistrForm = () => {
 
   const handlerSubmit = async (data: z.infer<typeof formSchema>) => {
     try {
-      const response = await fetch(process.env.SERVER_URL + "/api/auth/registartion", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(data),
-      });
+      const phoneNumber = parseInt(data.phone, 10);
+      const payload = {
+        ...data,
+        phone: phoneNumber,
+      };
+      
+      const response = await fetch(
+        "http://localhost:5000/api/auth/registration",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(payload),
+          credentials: "include",
+        }
+      );
 
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
 
       const result = await response.json();
-      const token = await result.result.token;
-      localStorage.setItem("token", token);
+
       toast("Успешная регистрация", {
         description: result.message,
         action: {
@@ -95,6 +104,7 @@ const RegistrForm = () => {
         },
       });
       router.replace("/");
+      router.refresh();
     } catch (error) {
       console.error("Error fetching data:", error);
       toast.error("Ошибка регистрации", {

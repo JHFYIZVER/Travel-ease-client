@@ -72,23 +72,26 @@ const LoginForm = () => {
           "Content-Type": "application/json",
         },
         body: JSON.stringify(data),
+        credentials: "include",
       });
 
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
 
-      const result = await response.json();
-      const token = await result.result.token;
-      localStorage.setItem("token", token);
       toast("Успешная авторизация", {
-        description: result.message,
         action: {
           label: "Закрыть",
           onClick: () => console.log("Закрыть"),
         },
+        style: {
+          backgroundColor: "#4CAF50",
+          color: "white",
+          fontWeight: "bold",
+        },
       });
       router.replace("/");
+      router.refresh();
     } catch (error) {
       console.error("Error fetching data:", error);
       toast.error("Ошибка авторизации", {

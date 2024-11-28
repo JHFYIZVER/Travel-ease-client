@@ -1,5 +1,6 @@
 import { HomePage } from "@/app/(home)/index";
 
-export default function Home() {
+export default async function Home() {
+  
   return <HomePage />;
 }
